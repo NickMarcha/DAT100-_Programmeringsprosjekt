@@ -98,8 +98,8 @@ public class GPSComputer {
 	}
 
 
-	// conversion factor m/s to miles per hour
-	public static double MS = 2.236936;
+	// conversion factor kph (km/t) to miles per hour (mph)
+	public static double MS = 0.62;
 
 	// beregn kcal gitt weight og tid der kjøres med en gitt hastighet
 	public double kcal(double weight, int secs, double speed) {
