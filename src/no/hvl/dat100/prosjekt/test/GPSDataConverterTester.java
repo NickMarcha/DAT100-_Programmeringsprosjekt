@@ -46,7 +46,7 @@ public class GPSDataConverterTester {
 	@Test
 	public void test_toSeconds() {
 		
-		String timestr = "2017-08-13T08:52:26.000";
+		String timestr = "2017-08-13T08:52:26.000Z";
 		
 	    assertEquals("testtoSeconds", 
 	    		8*60*60 + 52*60 + 26,GPSDataConverter.toSeconds(timestr));
