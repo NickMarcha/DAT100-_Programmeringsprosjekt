@@ -6,14 +6,15 @@ Denne oppbevaringsplassen innholder startkode i form av et Eclipse-prosjekt som 
 
 Java-programmeringen i prosjektet vil basere seg på det som er gjennomgått i faget frem til nå dvs. kapittel 1 til 5.6 i læreboken.
 
-- Praktisk informasjon
-- Introduksjon til oppgavene og startkoden
-- programmeringsoppgavene
-- Ekstra oppgaver
+- [Praktisk informasjon](https://github.com/dat100hib/dat100-prosjekt/blob/master/docs/praktiskinfo.md) 
+- [Mål med prosjektet og Java startkode](https://github.com/dat100hib/dat100-prosjekt/blob/master/docs/introduksjon.md)
+- [Programmeringsoppgavene](https://github.com/dat100hib/dat100-prosjekt/blob/master/docs/oppgaver.md)
+- [Ekstra oppgaver](https://github.com/dat100hib/dat100-prosjekt/blob/master/docs/ekstraoppgaver.md) Disse er frivillige og tenkt som ekstra utfordringer for de som har lyst på det.
 
-Informasjon om prosjektet og de obligatorisk deler som inngår finnes i mappen «Prosjekt» på it’s learning. Her er det også opprettet et diskusjonsforum for spørsmål og svar omkring prosjektet.
+PÅ Canvas er det også også opprettet et [diskusjonsforum](https://hvl.instructure.com/courses/3029/discussion_topics/10142) for spørsmål og svar omkring prosjektet.
 
-**Senk skuldrene**. Deler av prosjektet vil oppleves som krevende for en del. Det gjelder i all hovedsak om å jobbe seriøst med programmeringsoppgavene og få så mye til som dere klarer. En del av den Java-koden som blir utlevert gir hint til hvordan de ulike oppgavene kan løses.
-I prosjektet finnes også en del ekstraoppgaver. Disse er frivillige og tenkt som ekstra utfordringer for de som har lyst på det.
+### Senk skuldrene
 
-J
+Deler av prosjektet vil oppleves som krevende for en del. Det gjelder i all hovedsak om å jobbe seriøst med programmeringsoppgavene og få så mye til som dere klarer. En del av den Java-koden som blir utlevert gir hint til hvordan de ulike oppgavene kan løses.
+
+
