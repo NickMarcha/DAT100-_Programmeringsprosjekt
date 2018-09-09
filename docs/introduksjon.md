@@ -1,4 +1,4 @@
-### Mål med oppgaven og startkode
+## Mål med prosjektet og startkode
 
 Mange sykkelcomputere, sportsklokker og fitness-applikasjoner bruker GPS data dvs. informasjon om bla. tid og posisjon for å beregne statistikk som distanse, hastighet, høydemeter og til å visualisere rute og høydeprofil. Dette gjøres i programkode på enheten.
 
@@ -6,11 +6,11 @@ Formålet med dette prosjektet er å implementere Java-programmer som har tilsva
 
 Det siste målet med prosjektet er en Java-applikasjon som bruker EasyGraphics biblioteket til løpende (live) å gi syklisten (brukeren) informasjon svarende til det som skissert på bildet nedenfor. Her er tid og aktuell hastighet vist i øverste venstre hjørne og høydeprofilen er i midten. Videre er ruten er tegnet på et kort nederst der rød angir at sykkelruten går oppover, grønn at det går nedover og blå at det er flatt.
 
-![](assets/markdown-img-paste-20180909103123409.png)
+![](assets/markdown-img-paste-20180909131911330.png)
 
-#### GPS data format
+### GPS data format
 
-Der finnes ulike formater som kan brukes til å lagre GPS data. I dette prosjektet skal vi ta utgangs-punkt i tekstfiler som bruker en variant av CSV formatet (Comma-Separated-Values). Dette betyr at en datafil med eksempelvis fem GPS datapunkter representeres på følgende måte:
+Der finnes ulike formater som kan brukes til å lagre GPS data. I dette prosjektet skal vi ta utgangs-punkt i tekstfiler som bruker en variant av *CSV* formatet (Comma-Separated-Values). Dette betyr at en datafil med eksempelvis fem GPS datapunkter representeres på følgende måte:
 
 ```
 5
@@ -32,9 +32,9 @@ I oppgaven skal dere bruke større GPS datafiler bla. en datafil hvor en DAT100 
 
 Ruten er vist her: http://doarama.com/view/1604599 der GPS datafilen er visualisert basert på en web-basert applikasjon.
 
-#### Eclipse-prosjekt for en sykkelcomputer
+### Eclipse-prosjekt for en sykkelcomputer
 
-Dere skal ta utgangpunkt i et Eclipse-prosjekt som inneholder en rekke Java-klasser som utgjør ram-men rundt en sykkelcomputer-applikasjonen. Dere trenger ikke å legge til nye klasser, men dere skal implementere ulike metoder i klassene som er gitt.
+Dere skal ta utgangpunkt i et Eclipse-prosjekt som inneholder en rekke Java-klasser som utgjør rammen rundt en sykkelcomputer-applikasjonen. Dere trenger ikke å legge til nye klasser, men dere skal implementere ulike metoder i klassene som er gitt.
 
 Gruppen kan få tilgang til start Java-koden via Github classroom ved å gå til følgende adresse:
 
@@ -48,22 +48,25 @@ Hvis gruppen ønsker å bruke en felles github-oppbevaringsplass for koden, er d
 
 De andre gruppemedlemmene må da klone oppbevaringsplassen ned på egen PC ved å velge *File → Import → Git → Projects from Git → Clone URI* i Eclipse og lime inn URL’en til den felles oppbevaringsplassen. Endringer i filer i prosjektet lastes opp til den felles oppbevaringsplassen ved å bruke  *Team | Add to Index* etterfulgt av *Team | Commit … | Commit and Push* og hentes ned ved å bruke *Team | Pull*.
 
-#### Java-koden for implementasjonen av en sykkelcomputer
+### Java startkoden
 
 Eclipse-prosjektet som dere skal ta utgangspunkt i er organisert i to pakker:
 
 - `no.hvl.dat100.prosjekt` med de klasser som inneholder metoder som gruppen skal implementere i oppgavene som presenteres nedenfor.
 
-- `no.hvl.dat100.prosjekt.test` som inneholder en rekke enhetstester (unit-tests) imple-mentert ved bruk av rammeverket JUnit. Det er ikke et krav i prosjektet å legge til flere enhetstes-ter.
+- `no.hvl.dat100.prosjekt.test` som inneholder en rekke enhetstester (unit-tests) implementert ved bruk av rammeverket JUnit. Det er ikke et krav i prosjektet å legge til flere enhetstes-ter.
 
 Formålet med enhetstestene er å gjøre det enklere å teste metoder etterhvert som de implementeres uten å skulle starte selve sykkelcomputer-applikasjonen.  
 
 Konvensjonen er at enhetstester for en klasse `X.java` er implementert i filen med navn `XTester`.java. Eksempelvis inneholder klassen `GPSUtilsTester.java` enhetstester for klassen `GPSUtils.java` hvor dere skal implementere metoder.  
 
+### Utføre JUnit enhetstest
 En test-klasse med enhetstest utføres ved å velge test-klassen etterfulgt av *Run As → JUnit Test*. Man kan kjøre alle testene i en test-pakke ved å velge pakken etterfulgt av *Run As → JUnit Test*. Alle testene i Eclipse-prosjektet kjøres ved å velge prosjektet etterfulgt av *Run As → JUnit Test*.
 
-Det er god/anbefalt praksis å gjenta testene når det gjøres endringer/forbedringer i implementasjonen av en metode. Det anbefales også å teste etterhvert som de enkelte metoder implementeres. Enhetstestene er ikke komplette, men tester basale ting for metodene i de klasser som dere skal implementere. Enhetstesting og test-drevet utvikling er et tema senere i studiet og det er et generelt godt ingeniørprinsipp å teste komponentene sine før de settes sammen til et større system.
+Det er god/anbefalt praksis å gjenta testene når det gjøres endringer/forbedringer i implementasjonen av en metode. Det anbefales også å teste etterhvert som de enkelte metoder implementeres. Enhetstestene er ikke komplette, men tester basale ting for metodene i de klasser som dere skal implementere.
+
+Enhetstesting og test-drevet utvikling er et tema senere i studiet og det er et generelt godt ingeniørprinsipp å teste komponentene sine før de settes sammen til et større system.
 
 De steder i koden hvor dere skal implementere Java-kode, er merket med en kommenter og teksten `TODO`. Disse plassene i koden kan lett identifiseres ved at de gir en blå markering i høyresiden av editor-vinduet i Eclipse. For å kjøre det enklere ifm. presentasjon av oppgaven å finne de plassene hvor dere har lagt til kode, anbefales det å la kommentarene med `OPPGAVE – START` og `SLUTT` bli stående i koden.  
 
-I mappen logs i Eclipse-prosjektet finnes tre CSV filer filer: `short.log`, `medium.log`, `long.log` og `vm.log` med GPS data punkter som kan brukes som input til Java sykkelcomputeren.
+I mappen `logs` i Eclipse-prosjektet finnes tre CSV filer filer: `short.log`, `medium.log`, `long.log` og `vm.log` med GPS data punkter som kan brukes som input til Java sykkelcomputeren.
