@@ -2,7 +2,7 @@
 
 I uke 38 og uke 39 skal dere jobbe med et programmeringsprosjekt om å gjøre beregninger og visualisere GPS sensor data (Global Positioning System) som brukes i sykkelcomputere, sportsklokker og fitness-applikasjoner.
 
-Denne oppbevaringsplassen innholder startkode i form av et Eclipse-prosjekt som skal danne utgangspunkt for ulike Java programmer. I prosjektet skal dere jobbe i grupper på 2-4 personer med å implementere de delene som mangler for at programmene blir komplett.
+Denne oppbevaringsplassen innholder startkode i form av et Eclipse-prosjekt som skal danne utgangspunkt for ulike Java programmer. I prosjektet skal dere jobbe i grupper på 2-3 personer med å implementere de delene som mangler for at programmene blir komplett.
 
 Java-programmeringen i prosjektet vil basere seg på det som er gjennomgått i faget frem til nå dvs. kapittel 1 til 5.6 i læreboken.
 
