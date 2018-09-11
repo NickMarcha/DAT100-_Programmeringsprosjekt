@@ -38,7 +38,7 @@ Dere skal ta utgangpunkt i et Eclipse-prosjekt som inneholder en rekke Java-klas
 
 Gruppen kan få tilgang til start Java-koden via Github classroom ved å gå til følgende adresse:
 
-https://classroom.github.com/a/Ro2H6KZk (NEED UPDATE)
+https://classroom.github.com/a/rH9NpPrl
 
 og akseptere oppgaven.
 
