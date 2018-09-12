@@ -110,11 +110,11 @@ da skal denne konverteres til en latitude-tabellen av tal som ser slik ut
 latitudes = { 60.385390, 60.385588, 60.385398, 60.383428, 60.376988}
 ```
 
-Metoden ```public void convert()``` i klassen GPSDataConverter inneholder starten på kode som kan gjøre denne konverteringen for breddegrader.
-
 #### 2a)
 
-Utvid convert-metoden slik den også konverterer lengdegrader og høyder.
+Metoden ```public void convert()``` i klassen GPSDataConverter inneholder starten på kode som kan gjøre denne konverteringen.
+
+Utvid convert-metoden slik den også konverterer breddegrader, lengdegrader og høyder.
 
 #### 2b)
 
