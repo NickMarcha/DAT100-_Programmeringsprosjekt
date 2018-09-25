@@ -24,11 +24,18 @@ public class CycleComputer extends EasyGraphics {
 	private double minlon, minlat, maxlon, maxlat;
 
 	private double xstep, ystep;
+	
+	private static int MAPXSIZE = 800;
+	private static int MAPYSIZE = 800;
 
 	public CycleComputer() {
 
-		String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
-
+		
+		String filename = new String();
+		
+		
+		filename = JOptionPane.showInputDialog("GPS data filnavn: ");
+		
 		GPSData gpsdata = GPSDataReaderWriter.readGPSFile(filename);
 
 		gpscomputer = new GPSComputer(gpsdata);
@@ -66,25 +73,67 @@ public class CycleComputer extends EasyGraphics {
 	// løp igjennom punkter på uten og visualiser løpende høyde, position og
 	// statisikk
 	public void bikeRoute() {
+		
+		int ybase = MARGIN + MAPYSIZE;
+		double xstep = xstep();
+		double ystep = ystep();
 
-		// TODO
+		double minlon = GPSUtils.findMin(longitudes);
+		double minlat = GPSUtils.findMin(latitudes);
+
+		setColor(0, 255, 0); // green
+
+		// draw the locations
+		
+		int lastX = 0;
+		int lastY = 0;
+		for (int i = 0; i < latitudes.length; i++) {
+
+			int x,y;
+
+			// TODO: OPPGAVE START
+			
+			// må finne punkt nr i fra latitues og longitudes tabellene
+			// og sette x og y til der de skal tegnes som et punkt i vinduet
+			
+			x = MARGIN + (int) ((longitudes[i] - minlon) * xstep);
+			y = ybase - (int) ((latitudes[i] - minlat) * ystep);
+			//((longitudes[0] - minlon) * xstep);
+			//int y = ybase - (int) ((latitudes[0] - minlat) * ystep);
+			fillCircle(x,y,3);
+			// OPPGAVE SLUTT
+			
+			if(i > 0) {
+				drawLine(lastX, lastY, x, y);
+			}
+			lastX = x;
+			lastY = y;
+		}
+		
 	}
 
 	public double xstep() {
 
-		double xstep = 0.0;
+		double maxlon = GPSUtils.findMax(longitudes);
+		double minlon = GPSUtils.findMin(longitudes);
 
-		// TODO
+		double xstep = MAPXSIZE / (Math.abs(maxlon - minlon)); 
 
 		return xstep;
 	}
 
 	public double ystep() {
-
-		double ystep = 0.0;
-
+		
 		// TODO
+		// OPPGAVE - START
+		
+		double maxlat = GPSUtils.findMax(latitudes);
+		double minlat = GPSUtils.findMin(latitudes);
 
+		double ystep = MAPXSIZE / (Math.abs(maxlat - minlat)); 
+		
+		// OPPGAVE SLUTT
+		
 		return ystep;
 	}
 

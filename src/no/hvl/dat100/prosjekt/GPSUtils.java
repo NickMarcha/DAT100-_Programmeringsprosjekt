@@ -16,7 +16,17 @@ public class GPSUtils {
 		
 		// TODO
 		// OPPGAVE - START
-				
+		
+		int secondsInAnHour = 60 * 60;
+		int secondsInAMinute = 60;
+
+		int Hours   = (secs)/(secondsInAnHour);
+		int Minutes = (secs%(secondsInAnHour))/secondsInAMinute;
+		int Seconds = (secs%(secondsInAnHour))%secondsInAMinute;
+		
+		timestr = String.format("%02d", Hours) + TIMESEP +
+				String.format("%02d", Minutes) + TIMESEP +
+				String.format("%02d", Seconds); 
 		// OPPGAVE - SLUTT
 		
 		return timestr;
@@ -33,17 +43,22 @@ public class GPSUtils {
 			}
 		}
 
-		return max;
+		return max; 
 	}
 
 	// beregn minimum av en tabell av doubles med minnst et element
 	public static double findMin(double[] da) {
 
 		// fjern = "0.0" når metoden implementeres for ikke få forkert minimum
-		double min = 0.0; 
+		double min =  da[0]; 
 
 		// TODO
 		// OPPGAVE - START
+		for (double d : da) {
+			if (d < min) {
+				min = d;
+			}
+		}
 
 		// OPPGAVE - SLUT
 		return min;
@@ -57,9 +72,16 @@ public class GPSUtils {
 
 		double a,c,d = 1.0; // fjern = 1.0
 		
+		double R = 6371000; //  meter er jordens gjennomsnittsradius.
 		// TODO:
 		// OPPGAVE - START
-		
+		double phi1 = Math.toRadians(latitude1);
+		double phi2 = Math.toRadians(latitude2);
+		double deltaPhi = phi2 - phi1;
+		double deltaLambda = Math.toRadians(longitude1) - Math.toRadians(longitude2);
+		a = Math.pow(Math.sin(deltaPhi/2),2) + (Math.cos(phi1) * Math.cos(phi2) * (Math.pow(Math.sin(deltaLambda / 2), 2)));
+		c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		d = R * c;
 		// OPPGAVE - SLUTT
 
 		return d;
@@ -72,6 +94,9 @@ public class GPSUtils {
 
 		// TODO:
 		// OPPGAVE - START
+		double mDistance = distance(latitude1, longitude1, latitude2, longitude2);
+		
+		speed = mDistance/secs * 3.6;
 		
 		// OPPGAVE - SLUTT
 
@@ -90,7 +115,7 @@ public class GPSUtils {
 		
 		// TODO
 		// OPPGAVE - START
-		
+		str = "      "+String.format("%.2f", d);
 		// OPPGAVE - SLUTT
 		
 		return str;

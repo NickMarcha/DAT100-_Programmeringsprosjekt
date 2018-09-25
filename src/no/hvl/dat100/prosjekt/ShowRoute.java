@@ -6,16 +6,22 @@ import easygraphics.EasyGraphics;
 
 public class ShowRoute extends EasyGraphics {
 
+	/**
+	 * For � fjerne en warning lager jeg en Universal identifier
+	 */
+	private static final long serialVersionUID = 904813051469820352L;
+	
 	private static int[] times;
 	private static double[] latitudes;
 	private static double[] longitudes;
 	private static double[] elevations;
-
+ 
 	private static int MARGIN = 50;
 	private static int MAPXSIZE = 800;
 	private static int MAPYSIZE = 800;
 
 	private static GPSComputer gpscomputer;
+	private static GPSData thisGpsData;
 
 	public ShowRoute() {
 
@@ -23,8 +29,9 @@ public class ShowRoute extends EasyGraphics {
 
 		GPSData gpsdata = GPSDataReaderWriter.readGPSFile(filename);
 
+		
 		gpscomputer = new GPSComputer(gpsdata);
-
+		thisGpsData = gpsdata;
 		times = gpscomputer.times;
 		latitudes = gpscomputer.latitudes;
 		longitudes = gpscomputer.longitudes;
@@ -66,6 +73,11 @@ public class ShowRoute extends EasyGraphics {
 		// TODO
 		// OPPGAVE - START
 		
+		double maxlat = GPSUtils.findMax(latitudes);
+		double minlat = GPSUtils.findMin(latitudes);
+
+		ystep = MAPXSIZE / (Math.abs(maxlat - minlat)); 
+		
 		// OPPGAVE SLUTT
 		
 		return ystep;
@@ -82,6 +94,9 @@ public class ShowRoute extends EasyGraphics {
 		setColor(0, 255, 0); // green
 
 		// draw the locations
+		
+		int lastX = 0;
+		int lastY = 0;
 		for (int i = 0; i < latitudes.length; i++) {
 
 			int x,y;
@@ -91,7 +106,18 @@ public class ShowRoute extends EasyGraphics {
 			// må finne punkt nr i fra latitues og longitudes tabellene
 			// og sette x og y til der de skal tegnes som et punkt i vinduet
 			
+			x = MARGIN + (int) ((longitudes[i] - minlon) * xstep);
+			y = ybase - (int) ((latitudes[i] - minlat) * ystep);
+			//((longitudes[0] - minlon) * xstep);
+			//int y = ybase - (int) ((latitudes[0] - minlat) * ystep);
+			fillCircle(x,y,3);
 			// OPPGAVE SLUTT
+			
+			if(i > 0) {
+				drawLine(lastX, lastY, x, y);
+			}
+			lastX = x;
+			lastY = y;
 	}
 		
 
@@ -106,18 +132,30 @@ public class ShowRoute extends EasyGraphics {
 		
 		// TODO:
 		// OPPGAVE - START
-				
-		// OPPGAVE - SLUTT;
+		gpscomputer.climbs();
+		String[] outPutStrings = new String[] {
+				"GPS datafile: " + thisGpsData.getName(),
+				"Total Time     : " + String.format("%1$12s", GPSUtils.printTime(gpscomputer.totalTime())),
+				"Total distance : " + String.format("%1$12s", GPSUtils.printDouble(gpscomputer.totalDistance()/1000)) + " km",
+				"Total elevation: " + String.format("%1$10s", GPSUtils.printDouble(gpscomputer.totalElevation())) + " m",
+				"Max speed      : " + String.format("%1$12s", GPSUtils.printDouble(gpscomputer.maxSpeed())) + " km/t",
+				"Average speed  : " + String.format("%1$12s", GPSUtils.printDouble(gpscomputer.averageSpeed())) + " km/t",
+				"Energy         : " + String.format("%1$12s", GPSUtils.printDouble(gpscomputer.totalKcal(gpscomputer.WEIGHT))),
+				"Max Climb      : " +  String.format("%1$12s", GPSUtils.printDouble(gpscomputer.maxClimb())) + "%"
+		};
+		
+		for(int i = 0; i < outPutStrings.length; i++) {
+			drawString(outPutStrings[i],TEXTDISTANCE,TEXTDISTANCE*(i+1));
+		}
+		
 	}
 
 	public void playRoute(int ybase) {
-		
-		double minlat = GPSUtils.findMin(latitudes);
-		double minlon = GPSUtils.findMin(longitudes);
-
 		double xstep = xstep();
 		double ystep = ystep();
 
+		double minlon = GPSUtils.findMin(longitudes);
+		double minlat = GPSUtils.findMin(latitudes);
 		setColor(0, 0, 255); // blue;
 
 		// make a circle in the first point
@@ -129,6 +167,13 @@ public class ShowRoute extends EasyGraphics {
 		// TODO: 
 		// EKSTRAOPPGAVE -- START
 
+		for(int i = 0; i < longitudes.length; i++) {
+			x = MARGIN + (int) ((longitudes[i] - minlon) * xstep);
+			y = ybase - (int) ((latitudes[i] - minlat) * ystep);
+			setSpeed(1);
+			pause(50);
+			moveCircle(movingcircle, x, y);
+		}
 		// Få cirklen til å flytte seg mellom punktene i vinduet
 		
 		// EKSTRAOPPGAVE - SLUTT

@@ -10,9 +10,13 @@ public class ShowSpeed extends EasyGraphics {
 	private static double[] latitudes;
 	private static double[] longitudes;
 	private static double[] elevations;
+	
 		
 	private static int MARGIN = 50;
 	private static int BARHEIGHT = 200; // assume no speed above 200 km/t
+	private static int SPACING = 2;
+	private static int UNIT_WIDTH = 1;
+	private static int UNIT_HEIGHT = 1;
 	
 	private static GPSComputer gpscomputer; 
 	
@@ -39,7 +43,7 @@ public class ShowSpeed extends EasyGraphics {
 
 		int N = times.length-1; // number of data points
 		
-		makeWindow("Speed profile", 2*MARGIN + 2 * N, 2 * MARGIN + BARHEIGHT);
+		makeWindow("Speed profile", 2 * MARGIN * UNIT_WIDTH+ SPACING * N, 2 * MARGIN + BARHEIGHT * UNIT_HEIGHT);
 		
 		showSpeedProfile(MARGIN + BARHEIGHT,N);
 	}
@@ -53,8 +57,30 @@ public class ShowSpeed extends EasyGraphics {
 		double[] speeds = gpscomputer.speeds();
 		
 		// TODO:
+		setColor(0,255,0);
 		
-		// OPPGAVE - START		
+		fillRectangle(0,ybase * UNIT_HEIGHT - ((int)gpscomputer.averageSpeed() * UNIT_HEIGHT) - UNIT_HEIGHT/2, 2 * MARGIN * UNIT_WIDTH+ SPACING * N, UNIT_HEIGHT);
+		setColor(0, 0, 255);
+		// OPPGAVE - START	
+		for (int i = 0; i < speeds.length; i++) {
+
+			int height = (int)speeds[i];
+			
+			if(height <= 0) continue;
+			else if(height > BARHEIGHT) height = BARHEIGHT;
+			
+			int x1, y1, x2, y2; // koordinator søylen 
+			
+			
+
+			// TODO
+			// OPPGAVE - START
+			x1 = MARGIN * UNIT_WIDTH + i*SPACING * timescaling;
+			y1 = ybase * UNIT_HEIGHT - (height * UNIT_HEIGHT);
+			x2 = UNIT_WIDTH * timescaling;
+			y2 = height * UNIT_HEIGHT;
+			fillRectangle(x1,y1, x2,y2);
+		}
 		
 		// OPPGAVE - SLUTT
 	}

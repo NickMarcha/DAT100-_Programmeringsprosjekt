@@ -10,7 +10,7 @@ public class GPSUtilsTester {
 
 	@Test
 	public void test_printDouble() {
-		assertEquals("printDouble","      1.35",GPSUtils.printDouble(1.346));
+		assertEquals("printDouble","      1,35",GPSUtils.printDouble(1.346));
 	}
 	
 	@Test

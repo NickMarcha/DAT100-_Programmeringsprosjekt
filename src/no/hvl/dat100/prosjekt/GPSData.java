@@ -2,10 +2,13 @@ package no.hvl.dat100.prosjekt;
 
 public class GPSData {
 
+	private String fileName = new String();
 	private String[] times;
 	private String[] latitudes;
 	private String[] longitudes;
 	private String[] elevations;
+	
+	
 	
 	public GPSData() {
 		
@@ -50,6 +53,13 @@ public class GPSData {
 
 	public void setElevations(String[] elevations) {
 		this.elevations = elevations;
+	}
+
+	public void setName(String filename) {
+		this.fileName = filename;
+	}
+	public String getName() {
+		return this.fileName;
 	}
 
 }
